@@ -1,6 +1,6 @@
 let mapleader=" "
 
-" back normal mode 
+" back normal mode
 :imap ii <Esc>
 
 nnoremap <Leader>o o<Esc>
@@ -51,7 +51,7 @@ xmap s <Plug>VSurround
 nnoremap <leader>P :let @*=expand("%")<CR>
 
 " Eliminar espacios en blanco
-nmap <silent> <C-bs> :call DeleteTrailingWS()<CR>
+nmap <Leader><Bs> :%s/\s\+$//<cr>
 
 " tabs navigation
 map <Leader>h :tabprevious<cr>
@@ -142,7 +142,7 @@ function! ParensIndent()
 \    (prevChar == "[" && afterChar == "]")
     return "\<CR>\<ESC>O"
   endif
-  
+
   return "\<CR>"
 endfunction
 
@@ -160,7 +160,7 @@ function! ParensSpacing()
 \    (prevChar == "[" && afterChar == "]")
     return "\<space>\<space>\<left>"
   endif
-  
+
   return "\<space>"
 endfunction
 
@@ -179,7 +179,7 @@ function! ParensRemoveSpacing()
 \    (prevChar == "[" && afterChar == "]")
     return "\<bs>\<right>\<bs>"
   endif
-  
+
   if (prevChar == ' ' && afterChar == ' ')
     let prev = col('.') - 2
     let after = col('.') + 1
@@ -193,7 +193,7 @@ function! ParensRemoveSpacing()
       return "\<bs>\<right>\<bs>"
     endif
   endif
-  
+
   return "\<bs>"
 endfunction
 
@@ -224,7 +224,7 @@ inoremap <expr> ` CheckNextQuote(bticks)
 function CheckNextQuote(c)
   let after = col('.')
   let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
-  
+
   if (afterChar == a:c)
     return "\<right>"
   endif
@@ -252,8 +252,3 @@ function CheckNextParens(c)
   return a:c
 endfunction
 
-function DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunction
