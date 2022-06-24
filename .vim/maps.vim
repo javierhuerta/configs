@@ -51,7 +51,7 @@ xmap s <Plug>VSurround
 nnoremap <leader>P :let @*=expand("%")<CR>
 
 " Eliminar espacios en blanco
-nmap <silent> <C-bs> :call DeleteTrailingWS()<CR>
+nmap <Leader><Bs> :%s/\s\+$//<cr>
 
 " tabs navigation
 map <Leader>h :tabprevious<cr>
@@ -250,10 +250,4 @@ function CheckNextParens(c)
     return "\<right>"
   endif
   return a:c
-endfunction
-
-function DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
 endfunction
