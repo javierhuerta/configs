@@ -34,18 +34,48 @@ let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeMapOpenInTab='\t'
 
+let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsSnippetDirectories=[$HOME.'/configs/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<C-_>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-" kite
-"let g:kite_supported_languages = ['*']
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsListSnippets="<C-_>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+"let g:UltiSnipsExpandTrigger = "<nop>" " Se utiliza extensión para coc.ultisnips 
+
+let g:dashboard_default_executive = 'FZF'
+let g:dashboard_custom_shortcut={
+  \ 'last_session'       : 'SPC s l',
+  \ 'find_history'       : 'SPC f h',
+  \ 'find_file'          : 'SPC f f',
+  \ 'new_file'           : 'SPC c n',
+  \ 'change_colorscheme' : 'SPC t c',
+  \ 'find_word'          : 'SPC f a',
+  \ 'book_marks'         : 'SPC f b',
+  \ }
+
+let g:dashboard_custom_section={
+  \ 'buffer_list': ['? Recently lase session                 SPC b b'],
+  \ }
+
+function! BUFFER_LIST()
+  Clap buffers
+endfunction
+
+" Coc extensions
 let g:coc_global_extensions = [
-      \ 'coc-tsserver'
+      \ 'coc-tsserver',
+      \ 'coc-snippets',
+      \ 'coc-angular',
+      \ 'coc-html',
+      \ 'coc-prettier'
       \ ]
+
+" Prettier document
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
 " tmux navigator
 let g:tmux_navigator_no_mappings = 1
 

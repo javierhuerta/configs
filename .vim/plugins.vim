@@ -34,6 +34,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tyewang/vimux-jest-test'
 Plug 'janko-m/vim-test'
 
+" Dashboard
+Plug 'mhinz/vim-startify'
+
 " IDE
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf'

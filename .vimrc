@@ -23,7 +23,7 @@ highlight Normal ctermbg=NONE
 set laststatus=2
 set noshowmode
 
-au BufNewFile,BufRead *.html set filetype=htmldjango
+"au BufNewFile,BufRead *.html set filetype=htmldjango
 lua require'colorizer'.setup()
 
 "" Searching
